@@ -1,14 +1,3 @@
-target/
-.idea/
-*.iml
-*.log
-.DS_Store
-.classpath
-.project
-.settings/
-mvnw
-mvnw.cmd
-
 # Logs
 logs
 npm-debug.log*
