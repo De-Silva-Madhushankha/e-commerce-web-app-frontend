@@ -4,6 +4,7 @@ import { useState } from "react";
 import AppContext from "../Context/Context";
 import axios from "../axios";
 import UpdateProduct from "./UpdateProduct";
+
 const Product = () => {
   const { id } = useParams();
   const { data, addToCart, removeFromCart, cart, refreshData } =
@@ -84,7 +85,7 @@ const Product = () => {
             </span>
             <p className="release-date" style={{ marginBottom: "2rem" }}>
               
-              <h6>Listed : <span> <i> {new Date(product.releaseDate).toLocaleDateString()}</i></span></h6>
+              <h6>Listed : <span> <i> {new Date(product.release_date).toLocaleDateString()}</i></span></h6>
               {/* <i> {new Date(product.releaseDate).toLocaleDateString()}</i> */}
             </p>
             </div>
