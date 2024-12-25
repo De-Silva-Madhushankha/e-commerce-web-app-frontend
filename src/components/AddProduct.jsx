@@ -8,9 +8,9 @@ const AddProduct = () => {
     description: "",
     price: "",
     category: "",
-    stockQuantity: "",
-    releaseDate: "",
-    productAvailable: false,
+    quantity: "",
+    release_date: "",
+    available: false,
   });
   const [image, setImage] = useState(null);
 
@@ -21,7 +21,7 @@ const AddProduct = () => {
 
   const handleImageChange = (e) => {
     setImage(e.target.files[0]);
-    // setProduct({...product, image: e.target.files[0]})
+    setProduct({...product, image: e.target.files[0]})
   };
 
   const submitHandler = (event) => {
@@ -33,6 +33,7 @@ const AddProduct = () => {
       new Blob([JSON.stringify(product)], { type: "application/json" })
     );
 
+    console.log("Form data:", formData);
     axios
       .post("http://localhost:8080/api/product", formData, {
         headers: {
@@ -139,10 +140,10 @@ const AddProduct = () => {
             className="form-control"
             placeholder="Stock Remaining"
             onChange={handleInputChange}
-            value={product.stockQuantity}
-            name="stockQuantity"
-            // value={`${stockAlert}/${stockQuantity}`}
-            id="stockQuantity"
+            value={product.quantity}
+            name="quantity"
+            // value={`${stockAlert}/${quantity}`}
+            id="quantity"
           />
         </div>
         <div className="col-md-4">
@@ -152,10 +153,10 @@ const AddProduct = () => {
           <input
             type="date"
             className="form-control"
-            value={product.releaseDate}
-            name="releaseDate"
+            value={product.release_date}
+            name="release_date"
             onChange={handleInputChange}
-            id="releaseDate"
+            id="release_date"
           />
         </div>
         {/* <input className='image-control' type="file" name='file' onChange={(e) => setProduct({...product, image: e.target.files[0]})} />
@@ -175,11 +176,11 @@ const AddProduct = () => {
             <input
               className="form-check-input"
               type="checkbox"
-              name="productAvailable"
+              name="available"
               id="gridCheck"
-              checked={product.productAvailable}
+              checked={product.available}
               onChange={(e) =>
-                setProduct({ ...product, productAvailable: e.target.checked })
+                setProduct({ ...product, available: e.target.checked })
               }
             />
             <label className="form-check-label">Product Available</label>
@@ -189,7 +190,7 @@ const AddProduct = () => {
           <button
             type="submit"
             className="btn btn-primary"
-            // onClick={submitHandler}
+            onClick={submitHandler}
           >
             Submit
           </button>
